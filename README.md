@@ -48,7 +48,7 @@ Especificación:
     -Atributos:
         ID (Clave Primaria)
         Username
-        Password (Se recomienda almacenar la contraseña de forma segura, por ejemplo, como un hash)
+        Password
     -Relaciones:
         Puede tener uno o varios Roles (relación N:N)
     
@@ -115,6 +115,7 @@ CREATE TABLE Especificacion (
     Producto_ID INT,
     FOREIGN KEY (Producto_ID) REFERENCES Producto(ID)
 );
+
 
 
 

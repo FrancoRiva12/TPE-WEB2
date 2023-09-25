@@ -15,6 +15,8 @@ Nuestro modelo de datos permite la relacion 1:N Entre productos y especificacion
 
 Diagrama de Entidad relacion:
 
+![Entity Relationship Diagram (1)](https://github.com/FrancoRiva12/TPE-WEB2/assets/113930684/b6aef840-5464-4385-9121-3c3a23003fa6)
+
 Producto (Placa de Video):
 
     -Atributos:

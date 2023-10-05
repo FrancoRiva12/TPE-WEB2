@@ -2,8 +2,8 @@
 Trabajo Práctico Especial de Web 2
 
 Integrantes:
-    -RIVA, Franco
-    -LORENZO, Nicolas
+    -RIVA, Franco (francoriva72@gmail.com)
+    -LORENZO, Nicolas (nikolaslorenzo@gmail.com)
 
 El sitio permite ver a los visitantes info detallada sobre las diferentes placas de video a la venta, incluyendo especificaciones tecnicas, los administradores podran agregar, quitar y editar las placas de video y administrar las especificaciones asociadas a ellas.
 

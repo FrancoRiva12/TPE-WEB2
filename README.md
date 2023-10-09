@@ -118,6 +118,6 @@ CREATE TABLE Especificacion (
     FOREIGN KEY (Producto_ID) REFERENCES Producto(ID)
 );
 
-
+![Entity Relationship Diagram (1)](https://github.com/FrancoRiva12/TPE-WEB2/assets/113930684/3c9ad612-7b5d-48f2-93d8-b073e7f32b93)
 
 

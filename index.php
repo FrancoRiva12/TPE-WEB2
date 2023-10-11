@@ -26,9 +26,9 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
     <?php foreach ($productos as $producto) : ?>
         <li>
             <a href="detalle.php?id=<?php echo $producto->ID; ?>">
-                <?php echo $producto->Nombre; ?>
+                <?php echo $producto->Modelo; ?>
             </a>
-            (Categoría: <?php echo obtenerCategoria($producto->Categoria_ID); ?>)
+            (Categoría: <?php echo obtenerCategoria($producto->Marca); ?>)
         </li>
     <?php endforeach; ?>
 </ul>

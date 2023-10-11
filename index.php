@@ -28,7 +28,7 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
             <a href="detalle.php?id=<?php echo $producto->ID; ?>">
                 <?php echo $producto->Modelo; ?>
             </a>
-            (Categoría: <?php echo obtenerCategoria($producto->Marca); ?>)
+            (Marca: <?php echo $producto->Marca; ?>)
         </li>
     <?php endforeach; ?>
 </ul>
@@ -38,8 +38,8 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
 <ul>
     <?php foreach ($categorias as $categoria) : ?>
         <li>
-            <a href="items_por_categoria.php?categoria=<?php echo $categoria->ID; ?>">
-                <?php echo $categoria->Nombre; ?>
+            <a href="items_por_categoria.php?categoria=<?php echo $categoria->Marca_ID; ?>">
+                <?php echo $categoria->Marca_ID; ?>
             </a>
         </li>
     <?php endforeach; ?>

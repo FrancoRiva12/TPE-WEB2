@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Realizar una consulta SQL para verificar las credenciales del usuario
+    //verifico las credenciales del usuario
     $sql = "SELECT * FROM Usuarios WHERE Username = :username";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);

@@ -8,7 +8,7 @@ $query->execute();
 $productos = $query->fetchAll(PDO::FETCH_OBJ);
 
 // Consulta para obtener todas las categorías
-$queryCategorias = $pdo->prepare('SELECT * FROM Categoria');
+$queryCategorias = $pdo->prepare('SELECT * FROM categoria_placa');
 $queryCategorias->execute();
 $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
 ?>

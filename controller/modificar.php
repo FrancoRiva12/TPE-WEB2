@@ -2,6 +2,15 @@
 require 'config.php';
 
 
+session_start();
+
+// Verificamos si el usuario está autenticado
+if (!isset($_SESSION['user_id'])) {
+    // Usuario no autenticado, redirigimos a la página de inicio de sesión
+    header('Location: login.php');
+    exit();
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $marca = $_POST['marca'];

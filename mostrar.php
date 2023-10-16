@@ -2,7 +2,7 @@
 
 require 'config.php';
 
-$db = new PDO('mysql:host=localhost;dbname=placas_de_video;charset=utf8', 'root', 'admin');
+$db = new PDO('mysql:host=localhost;dbname=placas_de_video;charset=utf8', 'root', '');
 
 // Consulta para obtener todas las placas de video
 $query = $db->prepare('SELECT * FROM Producto');

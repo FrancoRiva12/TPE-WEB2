@@ -1,6 +1,7 @@
 <?php
 
-require 'config.php';
+
+require '../config.php';
 
 $db = new PDO('mysql:host=localhost;dbname=placas_de_video;charset=utf8', 'root', '');
 

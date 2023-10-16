@@ -1,6 +1,7 @@
 <?php
 
-require 'config.php';
+
+require '../config.php';
 
 // Verificar si el usuario ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -9,18 +10,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Consulta para verificar las credenciales del usuario
-    $query = $pdo->prepare('SELECT * FROM Usuarios WHERE Username = ?');
+    $query = $pdo->prepare('SELECT * FROM usuarios WHERE Username = ?');
     $query->execute([$username]);
     $user = $query->fetch(PDO::FETCH_OBJ);
 
     // Verificar la contraseña
-    if ($user && password_verify($password, $user->Password)) {
-        // Iniciar sesión
-        session_start();
-        $_SESSION['user_id'] = $user->ID;
-        $_SESSION['username'] = $user->Username;
+    if ($user) {
+        // Verificar la contraseña
+        if ($password === $user->Password) {
+            
+            session_start();
+            $_SESSION['user_id'] = $user->ID;
+            $_SESSION['username'] = $user->Username;
+        } else {
+            // Contraseña incorrecta
+            $error_message = "Credenciales incorrectas.";
+        }
     } else {
-        // Error si erramos contraseña o usuario
+        // Usuario no encontrado
         $error_message = "Credenciales incorrectas.";
     }
 }
@@ -57,7 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php
     if (isset($_SESSION['username'])) {
         // Mostrar el botón para ir a siguiente
-        echo '<a href="mostrar.php">Ir a Mostrar</a>';
+        echo '<a href="../index.php">Ir a la pagina principal
+        </a>';
     }
     ?>
 

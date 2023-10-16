@@ -1,11 +1,6 @@
 <?php
 require 'config.php';
 
-// Verificamos si el usuario es administrador
-if (!esAdministrador()) {
-    echo 'No tienes permiso para acceder a esta página.';
-    exit();
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];

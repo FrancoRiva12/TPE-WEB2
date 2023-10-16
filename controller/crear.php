@@ -1,11 +1,6 @@
 <?php
 require 'config.php';
 
-// Verificar si el usuario es administrador
-if (!esAdministrador()) {
-    echo 'No tienes permiso para acceder a esta página.';
-    exit();
-}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // proceso datos del formulkario

@@ -13,7 +13,7 @@ $productos = $query->fetchAll(PDO::FETCH_OBJ);
 echo "<ul>";
 foreach ($productos as $producto) {
     // Consulta para obtener las especificaciones de cada placa de video
-    $query = $db->prepare('SELECT * FROM Especificacion WHERE Producto_ID = ?');
+    $query = $db->prepare('SELECT * FROM producto WHERE ID = ?');
     $query->execute([$producto->ID]);
     $especificaciones = $query->fetchAll(PDO::FETCH_OBJ);
 
@@ -24,7 +24,7 @@ foreach ($productos as $producto) {
     echo '<ul>';
     foreach ($especificaciones as $especificacion) {
         echo '<li>';
-        echo 'Nombre: ' . $especificacion->Nombre . ', Valor: ' . $especificacion->Valor . ', Memoria: ' . $especificacion->Memoria . ', GPU Clock: ' . $especificacion->GPU_Clock . ', Memory Clock: ' . $especificacion->Memory_Clock . ', Fabricante: ' . $especificacion->Fabricante;
+        echo 'Nombre: ' . $especificacion->Marca . ', Modelo: ' . $especificacion->Modelo . ', Precio: $' . $especificacion->Precio . ', Descripcion: ' . $especificacion->Descripcion;
         echo '</li>';
     }
     echo '</ul>';

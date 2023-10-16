@@ -17,12 +17,12 @@ if (isset($_GET['id'])) {
         $categoria = $queryCategoria->fetch(PDO::FETCH_OBJ);
     } else {
         // Maneja el caso si el ítem no existe
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 } else {
     // Maneja el caso si no se proporciona un ID
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>

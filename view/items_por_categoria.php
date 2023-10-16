@@ -15,7 +15,7 @@ if (isset($_GET['categoria'])) {
     $categoria = $categoria_id;
 } else {
     //caso si no se proporciona un ID de categoría
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>

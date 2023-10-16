@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute([$marca, $modelo, $descripcion, $precio, $id]);
 
     // Redirect
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 } else {
     // Verificamos si se proporciona un ID de producto en la URL

@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute([$marca, $modelo, $descripcion, $precio]);
 
     // Redirigir al index
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 ?>

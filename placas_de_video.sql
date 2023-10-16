@@ -77,12 +77,6 @@ CREATE TABLE `usuarios` (
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`ID`, `Username`, `Password`) VALUES
-(1, 'webadmin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -155,6 +149,24 @@ ALTER TABLE `categoria_placa`
 ALTER TABLE `especificacion`
   ADD CONSTRAINT `especificacion_ibfk_1` FOREIGN KEY (`Producto_ID`) REFERENCES `producto` (`ID`);
 COMMIT;
+
+
+--
+-- Volcado de datos para inicializar la db
+--
+
+INSERT INTO `usuarios` (`ID`, `Username`, `Password`) VALUES
+(1, 'webadmin', 'admin');
+
+
+INSERT INTO `categoria_placa` (`Marca_ID`) VALUES ('Nvidia');
+
+INSERT INTO `categoria_placa` (`Marca_ID`) VALUES ('AMD');
+
+INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('','Nvidia','RTX 3080','Placa de video Gigabyte NVIDIA RTX 3080 de de 12GB de Memoria','300');
+
+INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('','AMD','6700XT','Placa de video Zotac 6700XT de 12GB de Memoria','250');
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

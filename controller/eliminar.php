@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute([$id]);
 
     // Redirigir a la página principal u otra página de tu elección
-    header('Location: mostrar.php');
+    header('Location: ../index.php');
     exit();
 } else {
     // Verificamos el id que nos traemos

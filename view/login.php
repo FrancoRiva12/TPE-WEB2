@@ -62,10 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <?php
-    if (isset($_SESSION['username'])) {
-        // Mostrar el botón para ir a siguiente
-        echo '<a href="../index.php">Ir a la pagina principal
-        </a>';
+      if (isset($_SESSION['username'])) {
+        echo '<a href="../index.php">Ir a la página principal</a>';
+        echo '<a href="../controller/crear.php">Crear Ítem</a>';
+        echo '<a href="../controller/eliminar.php">Eliminar Ítem</a>';
+        echo '<a href="../controller/modificar.php">Modificar Ítem</a>';
     }
     ?>
 

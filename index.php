@@ -1,13 +1,12 @@
 <?php
-// Incluimos el archivo de configuración de la base de datos (config.php)
 require 'config.php';
 
-// Consulta para obtener todos los ítems
+$showButtons = isset($_SESSION['username']);
+
 $query = $pdo->prepare('SELECT * FROM Producto');
 $query->execute();
 $productos = $query->fetchAll(PDO::FETCH_OBJ);
 
-// Consulta para obtener todas las categorías
 $queryCategorias = $pdo->prepare('SELECT * FROM categoria_placa');
 $queryCategorias->execute();
 $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
@@ -44,6 +43,13 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
         </li>
     <?php endforeach; ?>
 </ul>
+
+<?php if ($showButtons) : ?>
+    <!-- Mostrar los botones solo si el usuario está autenticado -->
+    <a href="controller/crear.php">Crear Ítem</a>
+    <a href="controller/eliminar.php">Eliminar Ítem</a>
+    <a href="controller/modificar.php">Modificar Ítem</a>
+<?php endif; ?>
 
 </body>
 </html>

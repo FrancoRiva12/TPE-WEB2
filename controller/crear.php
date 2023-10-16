@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // proceso datos del formulkario
+    // proceso datos del formulario
     $marca = $_POST['marca'];
     $modelo = $_POST['modelo'];
     $descripcion = $_POST['descripcion'];

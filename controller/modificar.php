@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require '../config.php';
 
 
 session_start();
@@ -50,6 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Manejamos el caso si no se proporciona un ID
         echo 'ID de producto no proporcionado.';
         exit();
+    }
+    if (isset($_SESSION['username'])) {
+        // Mostrar el botón para cerrar sesión
+        echo '<form method="post" action="logout.php">';
+        echo '<button type="submit">Cerrar Sesión</button>';
+        echo '</form>';
     }
 }
 ?>

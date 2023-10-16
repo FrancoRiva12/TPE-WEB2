@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require '../config.php';
 
 session_start();
 
@@ -25,6 +25,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: ../index.php');
     exit();
 }
+if (isset($_SESSION['username'])) {
+    // Mostrar el botón para cerrar sesión
+    echo '<form method="post" action="../view/logout.php">';
+    echo '<button type="submit">Cerrar Sesión</button>';
+    echo '</form>';
+}
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <h1>Crear Producto</h1>
-    
+
     <form method="POST">
         <label for="marca">Marca:</label>
         <input type="text" id="marca" name="marca" required><br><br>

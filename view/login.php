@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php
     if (isset($_SESSION['username'])) {
-        // Mostrar el botón para ir a mostrar.php
+        // Mostrar el botón para ir a siguiente
         echo '<a href="mostrar.php">Ir a Mostrar</a>';
     }
     ?>

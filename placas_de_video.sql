@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-10-2023 a las 19:56:44
+-- Tiempo de generación: 16-10-2023 a las 22:24:32
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -68,17 +68,6 @@ CREATE TABLE `producto` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
---
-
-CREATE TABLE `roles` (
-  `ID` int(11) NOT NULL,
-  `Nombre` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -88,17 +77,12 @@ CREATE TABLE `usuarios` (
   `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `usuarios_roles`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-CREATE TABLE `usuarios_roles` (
-  `ID` int(11) NOT NULL,
-  `Usuario_ID` int(11) DEFAULT NULL,
-  `Rol_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `usuarios` (`ID`, `Username`, `Password`) VALUES
+(1, 'webadmin', 'admin');
 
 --
 -- Índices para tablas volcadas
@@ -127,24 +111,10 @@ ALTER TABLE `producto`
   ADD KEY `Marca` (`Marca`);
 
 --
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID`);
-
---
--- Indices de la tabla `usuarios_roles`
---
-ALTER TABLE `usuarios_roles`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `Usuario_ID` (`Usuario_ID`),
-  ADD KEY `Rol_ID` (`Rol_ID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -166,7 +136,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

@@ -1,12 +1,9 @@
 <?php
 
-
-require '../config.php';
-
-$db = new PDO('mysql:host=localhost;dbname=placas_de_video;charset=utf8', 'root', '');
+require '../model/config.php';
 
 // Consulta para obtener todas las placas de video
-$query = $db->prepare('SELECT * FROM Producto');
+$query = $pdo->prepare('SELECT * FROM Producto');
 $query->execute();
 $productos = $query->fetchAll(PDO::FETCH_OBJ);
 

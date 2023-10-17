@@ -1,26 +1,33 @@
 <?php
-// Incluimos el archivo de configuración de la base de datos (config.php)
-require 'config.php';
+// Incluimos el archivo de configuración de la base de datos y pdo (config.php)
+require './model/config.php';
 
 session_start(); // Iniciar la sesión en la parte superior de tu archivo PHP
 
 // Verificar si el usuario ha iniciado sesión
 if (isset($_SESSION['username'])) {
     // El usuario ha iniciado sesión, mostrar botón de cierre de sesión
-    echo '<form method="post" action="logout.php">';
-    echo '<button type="submit">Cerrar Sesión</button>';
-    echo '</form>';
-    echo '<a href="controller/crear.php">Crear Ítem</a>';
-    echo '<a href="controller/eliminar.php">Eliminar Ítem</a>';
-    echo '<a href="controller/modificar.php">Modificar Ítem</a>';
+    $logoutButton = '<form method="post" action="logout.php">
+                        <button type="submit">Cerrar Sesión</button>
+                    </form>';
+    $crearItemLink = '<a href="controller/crear.php">Crear Ítem</a>';
+    $eliminarItemLink = '<a href="controller/eliminar.php">Eliminar Ítem</a>';
+    $modificarItemLink = '<a href="controller/modificar.php">Modificar Ítem</a>';
+} else {
+    $logoutButton = '';
+    $crearItemLink = '';
+    $eliminarItemLink = '';
+    $modificarItemLink = '';
+    include './view/login.php';
 }
 
-// Consulta para obtener todos los ítems
+
+// Consulta para obtener todas las placas
 $query = $pdo->prepare('SELECT * FROM Producto');
 $query->execute();
 $productos = $query->fetchAll(PDO::FETCH_OBJ);
 
-// Consulta para obtener todas las categorías
+// Consulta para obtener todas las categorías (marcas)
 $queryCategorias = $pdo->prepare('SELECT * FROM categoria_placa');
 $queryCategorias->execute();
 $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
@@ -59,6 +66,11 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <?= $logoutButton ?>
+    <?= $crearItemLink ?>
+    <?= $eliminarItemLink ?>
+    <?= $modificarItemLink ?>
 
 </body>
 

@@ -1,18 +1,18 @@
 <?php
+// Incluimos el archivo de configuración de la base de datos (config.php)
 require 'config.php';
 
 session_start(); // Iniciar la sesión en la parte superior de tu archivo PHP
 
 // Verificar si el usuario ha iniciado sesión
 if (isset($_SESSION['username'])) {
-    // El usuario ha iniciado sesión, mostrar botón de cierre de sesión y otras opciones
-    echo '<a href="view/logout.php">Cerrar Sesión</a>';
+    // El usuario ha iniciado sesión, mostrar botón de cierre de sesión
+    echo '<form method="post" action="logout.php">';
+    echo '<button type="submit">Cerrar Sesión</button>';
+    echo '</form>';
     echo '<a href="controller/crear.php">Crear Ítem</a>';
     echo '<a href="controller/eliminar.php">Eliminar Ítem</a>';
     echo '<a href="controller/modificar.php">Modificar Ítem</a>';
-} else {
-    // El usuario no ha iniciado sesión, mostrar botón de inicio de sesión
-    echo '<a href="view/login.php">Iniciar Sesión</a>';
 }
 
 // Consulta para obtener todos los ítems

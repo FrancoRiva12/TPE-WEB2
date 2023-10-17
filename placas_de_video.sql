@@ -35,24 +35,6 @@ CREATE TABLE `categoria_placa` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `especificacion`
---
-
-CREATE TABLE `especificacion` (
-  `ID` int(11) NOT NULL,
-  `Marca` varchar(255) NOT NULL,
-  `Modelo` varchar(255) NOT NULL,
-  `Valor` varchar(255) NOT NULL,
-  `Memoria` int(11) NOT NULL,
-  `GPU_Clock` int(11) NOT NULL,
-  `Memory_Clock` int(11) NOT NULL,
-  `Fabricante` varchar(255) NOT NULL,
-  `Producto_ID` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `producto`
 --
 
@@ -62,7 +44,6 @@ CREATE TABLE `producto` (
   `Modelo` varchar(255) NOT NULL,
   `Descripcion` text DEFAULT NULL,
   `Precio` decimal(10,2) NOT NULL,
-  `Admin_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -101,7 +82,6 @@ ALTER TABLE `especificacion`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Admin_ID` (`Admin_ID`),
   ADD KEY `Marca` (`Marca`);
 
 --
@@ -113,12 +93,6 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `especificacion`
---
-ALTER TABLE `especificacion`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -142,14 +116,6 @@ ALTER TABLE `usuarios`
 ALTER TABLE `categoria_placa`
   ADD CONSTRAINT `categoria_placa_ibfk_1` FOREIGN KEY (`Marca_ID`) REFERENCES `producto` (`Marca`),
   ADD CONSTRAINT `categoria_placa_ibfk_2` FOREIGN KEY (`Producto_ID`) REFERENCES `producto` (`ID`);
-
---
--- Filtros para la tabla `especificacion`
---
-ALTER TABLE `especificacion`
-  ADD CONSTRAINT `especificacion_ibfk_1` FOREIGN KEY (`Producto_ID`) REFERENCES `producto` (`ID`);
-COMMIT;
-
 
 --
 -- Volcado de datos para inicializar la db

@@ -1,5 +1,5 @@
 <?php
-require './model/config.php';
+require '../model/config.php';
 
 // Verificar si el usuario ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     ?>
 
-    <form method="POST" action="login.php">
+    <form method="POST" action="./view/login.php">
         <label for="username">Usuario:</label>
         <input type="text" id="username" name="username" required><br><br>
 
@@ -61,8 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Iniciar Sesión</button>
     </form>
-
-    <a href="../registro.php">Registrarse</a>
 
 </body>
 

@@ -32,17 +32,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $query->execute();
     $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 }
-
-if (isset($_SESSION['username'])) {
-    // Mostrar el botón para cerrar sesión
-    echo '<form method="post" action="logout.php">';
-    echo '<button type="submit">Cerrar Sesión</button>';
-    echo '</form>';
-    echo '<a href="../index.php">Volver a la pagina principal</a>';
-    echo '<a href="crear.php">Eliminar Ítem</a>';
-    echo '<a href="modificar.php">Modificar Ítem</a>';
-}
 ?>
+<?php if (isset($_SESSION['username'])): ?>
+    <form method="post" action="logout.php">
+        <button type="submit">Cerrar Sesión</button>
+    </form>
+    <a href="../index.php">Volver a la página principal</a>
+    <a href="crear.php">Eliminar Ítem</a>
+    <a href="modificar.php">Modificar Ítem</a>
+<?php endif; ?>
+
 
 <!DOCTYPE html>
 <html>

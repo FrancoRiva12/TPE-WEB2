@@ -63,26 +63,12 @@ CREATE TABLE `usuarios` (
 -- Índices para tablas volcadas
 --
 
---
--- Indices de la tabla `categoria_placa`
---
-ALTER TABLE `categoria_placa`
-  ADD KEY `Marca_ID` (`Marca_ID`),
-  ADD KEY `Producto_ID` (`Producto_ID`);
-
---
--- Indices de la tabla `especificacion`
---
-ALTER TABLE `especificacion`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `Producto_ID` (`Producto_ID`);
 
 --
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Marca` (`Marca`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -115,7 +101,7 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `categoria_placa`
   ADD CONSTRAINT `categoria_placa_ibfk_1` FOREIGN KEY (`Marca_ID`) REFERENCES `producto` (`Marca`),
-  ADD CONSTRAINT `categoria_placa_ibfk_2` FOREIGN KEY (`Producto_ID`) REFERENCES `producto` (`ID`);
+
 
 --
 -- Volcado de datos para inicializar la db

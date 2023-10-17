@@ -1,4 +1,3 @@
-<!-- registro.php -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +10,8 @@
 <?php
 
 require 'config.php';
+
+$registroExitoso = false; // Variable para verificar si el registro se completó con éxito
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Procesar el formulario de registro
@@ -25,31 +26,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Las contraseñas no coinciden.";
     } else {
         // Verificar si el nombre de usuario ya existe en la base de datos
-        // y guardar el nuevo usuario si no existe.
-        // Utilizo password_hash() para almacenar la contraseña de forma segura.
-        // Luego, redirige al usuario a la página de inicio de sesión.
-    }
-}
-if (empty($username) || empty($password) || empty($confirmPassword)) {
-    echo "Todos los campos son obligatorios.";
-} elseif ($password !== $confirmPassword) {
-    echo "Las contraseñas no coinciden.";
-} else {
-    // Verificar si el nombre de usuario ya existe en la base de datos
-    $query = $pdo->prepare('SELECT * FROM usuarios WHERE Username = ?');
-    $query->execute([$username]);
-    $existingUser = $query->fetch(PDO::FETCH_OBJ);
+        $query = $pdo->prepare('SELECT * FROM usuarios WHERE Username = ?');
+        $query->execute([$username]);
+        $existingUser = $query->fetch(PDO::FETCH_OBJ);
 
-    if ($existingUser) {
-        echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
-    } else {
-        // Si el nombre de usuario no existe, registramos al nuevo usuario
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        if ($existingUser) {
+            echo "El nombre de usuario ya está en uso. Por favor, elige otro.";
+        } else {
+            // Si el nombre de usuario no existe, registramos al nuevo usuario
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        $insertQuery = $pdo->prepare('INSERT INTO usuarios (Username, Password) VALUES (?, ?)');
-        $insertQuery->execute([$username, $hashedPassword]);
+            $insertQuery = $pdo->prepare('INSERT INTO usuarios (Username, Password) VALUES (?, ?)');
+            $insertQuery->execute([$username, $hashedPassword]);
 
-        echo "¡Registro exitoso! Ahora puedes iniciar sesión.";
+            echo "¡Registro exitoso! Ahora puedes iniciar sesión.";
+            $registroExitoso = true;
+        }
     }
 }
 ?>
@@ -66,6 +58,11 @@ if (empty($username) || empty($password) || empty($confirmPassword)) {
     
     <button type="submit">Registrar</button>
 </form>
+
+<!-- Mostrar el botón de inicio de sesión solo si el registro se ha completado con éxito -->
+<?php if ($registroExitoso): ?>
+    <a href="view/login.php">Iniciar Sesión</a>
+<?php endif; ?>
 
 </body>
 </html>

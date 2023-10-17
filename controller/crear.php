@@ -30,6 +30,9 @@ if (isset($_SESSION['username'])) {
     echo '<form method="post" action="../view/logout.php">';
     echo '<button type="submit">Cerrar Sesión</button>';
     echo '</form>';
+    echo '<a href="../index.php">Volver a la pagina principal</a>';
+    echo '<a href="eliminar.php">Eliminar Ítem</a>';
+    echo '<a href="modificar.php">Modificar Ítem</a>';
 }
 ?>
 

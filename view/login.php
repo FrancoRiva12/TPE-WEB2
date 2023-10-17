@@ -1,6 +1,4 @@
 <?php
-
-
 require '../config.php';
 
 // Verificar si el usuario ha enviado el formulario
@@ -16,12 +14,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Verificar la contraseña
     if ($user) {
-        // Verificar la contraseña
-        if ($password === $user->Password) {
-            
+        if (password_verify($password, $user->Password)) {
             session_start();
             $_SESSION['user_id'] = $user->ID;
             $_SESSION['username'] = $user->Username;
+            header('Location: ../index.php'); // Redirige al usuario a la página principal
+        } elseif ($user->Password === $password) { // Contraseña sin hashear
+            session_start();
+            $_SESSION['user_id'] = $user->ID;
+            $_SESSION['username'] = $user->Username;
+            header('Location: ../index.php');
         } else {
             // Contraseña incorrecta
             $error_message = "Credenciales incorrectas.";
@@ -31,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error_message = "Credenciales incorrectas.";
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -61,14 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Iniciar Sesión</button>
     </form>
 
-    <?php
-      if (isset($_SESSION['username'])) {
-        echo '<a href="../index.php">Ir a la página principal</a>';
-        echo '<a href="../controller/crear.php">Crear Ítem</a>';
-        echo '<a href="../controller/eliminar.php">Eliminar Ítem</a>';
-        echo '<a href="../controller/modificar.php">Modificar Ítem</a>';
-    }
-    ?>
+    <a href="../registro.php">Registrarse</a>
 
 </body>
 

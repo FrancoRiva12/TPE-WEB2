@@ -6,47 +6,41 @@ session_start();
 // Verificamos si el usuario está autenticado
 if (!isset($_SESSION['user_id'])) {
     // Usuario no autenticado, redirigimos a la página de inicio de sesión
-    header('Location: login.php');
+    header('Location: ../view/login.php');
     exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Procesamos la eliminación del dato
+    // El usuario ha enviado el formulario para eliminar un producto
     $id = $_POST['id'];
 
     // Realizar la eliminación en la base de datos
     $query = $pdo->prepare('DELETE FROM producto WHERE ID = ?');
-    $query->execute([$id]);
+    $success = $query->execute([$id]);
 
-    // Redirigir a la página principal u otra página de tu elección
-    header('Location: ../index.php');
-    exit();
-} else {
-    // Verificamos el id que nos traemos
-    if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-        
-        // Consulta para obtener los detalles del producto por ID
-        $query = $pdo->prepare('SELECT * FROM producto WHERE ID = ?');
-        $query->execute([$id]);
-        $producto = $query->fetch(PDO::FETCH_OBJ);
-
-        if (!$producto) {
-            // Maneja el caso si el producto no existe
-            echo 'El producto no existe.';
-            exit();
-        }
-    } else {
-        // Maneja el caso si no se proporciona un ID
-        echo 'ID de producto no proporcionado.';
+    if ($success) {
+        // Redirigir al usuario a la página principal con un mensaje de éxito
+        header('Location: ../index.php?message=Producto eliminado exitosamente');
         exit();
+    } else {
+        // Mostrar un mensaje de error si la eliminación falla
+        $error_message = "Hubo un error al eliminar el producto. Inténtalo de nuevo.";
     }
+} else {
+    // Consulta para obtener todos los productos
+    $query = $pdo->prepare('SELECT ID, Modelo FROM producto');
+    $query->execute();
+    $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 }
+
 if (isset($_SESSION['username'])) {
     // Mostrar el botón para cerrar sesión
     echo '<form method="post" action="logout.php">';
     echo '<button type="submit">Cerrar Sesión</button>';
     echo '</form>';
+    echo '<a href="../index.php">Volver a la pagina principal</a>';
+    echo '<a href="crear.php">Eliminar Ítem</a>';
+    echo '<a href="modificar.php">Modificar Ítem</a>';
 }
 ?>
 
@@ -57,12 +51,21 @@ if (isset($_SESSION['username'])) {
 </head>
 <body>
     <h1>Eliminar Producto</h1>
-    
+
     <form method="POST">
-        <p>¿Estás seguro de que deseas eliminar este producto?</p>
-        <input type="hidden" name="id" value="<?php echo $id; ?>">
-        <button type="submit">Eliminar</button>
-        <a href="index.php">Cancelar</a>
+        <label for="producto">Seleccionar Producto a Eliminar:</label>
+        <select id="producto" name="id">
+            <option value="">Selecciona un Producto</option>
+            <?php foreach ($productos as $producto) : ?>
+                <option value="<?php echo $producto['ID']; ?>"><?php echo $producto['Modelo']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <button type="submit">Eliminar Producto</button>
     </form>
+
+    <?php if (isset($error_message)) {
+        echo '<p>' . $error_message . '</p>';
+    }
+    ?>
 </body>
 </html>

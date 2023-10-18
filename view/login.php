@@ -1,5 +1,5 @@
 <?php
-require './config.php';
+require __DIR__ . '/../config.php';
 
 // Verificar si el usuario ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,12 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_start();
             $_SESSION['user_id'] = $user->ID;
             $_SESSION['username'] = $user->Username;
-            header('Location: ./index.php'); // Redirige al usuario a la página principal
+            header('Location: ../index.php'); // Redirige al usuario a la página principal
         } elseif ($user->Password === $password) { // Contraseña sin hashear
             session_start();
             $_SESSION['user_id'] = $user->ID;
             $_SESSION['username'] = $user->Username;
-            header('Location: ./index.php');
+            header('Location: ../index.php');
         } else {
             // Contraseña incorrecta
             $error_message = "Credenciales incorrectas.";

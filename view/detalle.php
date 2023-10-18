@@ -1,5 +1,6 @@
 <?php
-require '.config.php';
+
+require '../config.php';
 
 // Verifica si se proporciona un ID de producto en la URL
 if (isset($_GET['id'])) {

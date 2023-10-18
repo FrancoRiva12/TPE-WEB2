@@ -18,7 +18,7 @@ $controllerFolder = 'controller/';
 
 switch ($params[0]) {
     case 'home':
-        include $viewFolder . 'index.php'; // Carga la página principal
+        include 'index.php'; // Carga la página principal
         break;
     case 'detalle':
         include $viewFolder . 'detalle.php'; // Carga la página de detalle de ítem

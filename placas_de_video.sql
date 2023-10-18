@@ -43,7 +43,7 @@ CREATE TABLE `producto` (
   `Marca` varchar(255) NOT NULL,
   `Modelo` varchar(255) NOT NULL,
   `Descripcion` text DEFAULT NULL,
-  `Precio` decimal(10,2) NOT NULL,
+  `Precio` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -68,7 +68,7 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `producto`
 --
 ALTER TABLE `producto`
-  ADD PRIMARY KEY (`ID`),
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -96,12 +96,6 @@ ALTER TABLE `usuarios`
 -- Restricciones para tablas volcadas
 --
 
---
--- Filtros para la tabla `categoria_placa`
---
-ALTER TABLE `categoria_placa`
-  ADD CONSTRAINT `categoria_placa_ibfk_1` FOREIGN KEY (`Marca_ID`) REFERENCES `producto` (`Marca`),
-
 
 --
 -- Volcado de datos para inicializar la db
@@ -115,9 +109,9 @@ INSERT INTO `categoria_placa` (`Marca_ID`) VALUES ('Nvidia');
 
 INSERT INTO `categoria_placa` (`Marca_ID`) VALUES ('AMD');
 
-INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('','Nvidia','RTX 3080','Placa de video Gigabyte NVIDIA RTX 3080 de de 12GB de Memoria','300');
+INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('1','Nvidia','RTX 3080','Placa de video Gigabyte NVIDIA RTX 3080 de de 12GB de Memoria','300');
 
-INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('','AMD','6700XT','Placa de video Zotac 6700XT de 12GB de Memoria','250');
+INSERT INTO `producto` (`ID`, `Marca`,`Modelo`,`Descripcion`,`Precio`) VALUES ('2','AMD','6700XT','Placa de video Zotac 6700XT de 12GB de Memoria','250');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

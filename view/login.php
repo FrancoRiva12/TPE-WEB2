@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+require './config.php';
 
 // Verificar si el usuario ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

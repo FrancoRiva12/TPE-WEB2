@@ -3,6 +3,8 @@ session_start();
 
 // Destruye la sesión
 session_destroy();
+header('Location: index.php');
+exit();
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +17,6 @@ session_destroy();
 <h2>Cerraste la Sesión</h2>
 <p>Tu sesión se ha cerrado exitosamente.</p>
 
-<a href="login.php">Volver a Iniciar Sesión</a>
 
 </body>
 </html>

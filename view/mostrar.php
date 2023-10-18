@@ -1,6 +1,6 @@
 <?php
 
-require '../model/config.php';
+require './config.php';
 
 // Consulta para obtener todas las placas de video
 $query = $pdo->prepare('SELECT * FROM Producto');

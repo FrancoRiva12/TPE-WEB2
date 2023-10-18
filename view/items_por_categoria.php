@@ -1,6 +1,6 @@
 <?php
 
-require '../model/config.php';
+require '.config.php';
 
 // Verifica si se proporciona un ID de categoría en la URL
 if (isset($_GET['categoria'])) {

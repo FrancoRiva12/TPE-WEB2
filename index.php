@@ -1,6 +1,6 @@
 <?php
 // Incluimos el archivo de configuración de la base de datos y pdo (config.php)
-require './model/config.php';
+require './config.php';
 
 session_start(); // Iniciar la sesión en la parte superior de tu archivo PHP
 

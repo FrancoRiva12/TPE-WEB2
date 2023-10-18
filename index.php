@@ -7,8 +7,8 @@ session_start(); // Iniciar la sesión en la parte superior de tu archivo PHP
 // Verificar si el usuario ha iniciado sesión
 if (isset($_SESSION['username'])) {
     // El usuario ha iniciado sesión, mostrar botón de cierre de sesión
-    $logoutButton = '<form method="post" action="logout.php">
-                        <button type="submit">Cerrar Sesión</button>
+    $logoutButton = '<form method="post" action="index.php"> <!-- Redirige a la misma página para destruir la sesión -->
+                        <button type="submit" name="logout">Cerrar Sesión</button>
                     </form>';
     $crearItemLink = '<a href="controller/crear.php">Crear Ítem</a>';
     $eliminarItemLink = '<a href="controller/eliminar.php">Eliminar Ítem</a>';
@@ -19,6 +19,13 @@ if (isset($_SESSION['username'])) {
     $eliminarItemLink = '';
     $modificarItemLink = '';
     include './view/login.php';
+}
+
+// Verificar si se hizo clic en el botón "Cerrar Sesión"
+if (isset($_POST['logout'])) {
+    session_destroy(); // Destruir la sesión
+    header('Location: index.php'); // Redirigir a la misma página (index.php)
+    exit();
 }
 
 

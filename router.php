@@ -41,9 +41,6 @@ switch ($params[0]) {
     case 'modificar':
         include $controllerFolder . 'modificar.php'; // Carga el controlador para modificar ítems
         break;
-    case 'logout':
-        include $viewFolder . 'logout.php'; // Carga la página de cierre de sesión
-        break;
     case 'registro':
         include 'registro.php'; // Carga la página de registro
         break;

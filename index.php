@@ -13,11 +13,17 @@ if (isset($_SESSION['username'])) {
     $crearItemLink = '<a href="controller/crear.php">Crear Ítem</a>';
     $eliminarItemLink = '<a href="controller/eliminar.php">Eliminar Ítem</a>';
     $modificarItemLink = '<a href="controller/modificar.php">Modificar Ítem</a>';
+    $crearCategoriaLink = '<a href="controller/crear_categoria.php">Crear Categoria</a>';
+    $eliminarCategoriaLink = '<a href="controller/eliminar_categoria.php">Eliminar Categoria</a>';
+    $modificarCategoriaLink = '<a href="controller/modificar_categoria.php">Modificar Categoria</a>';
 } else {
     $logoutButton = '';
     $crearItemLink = '';
     $eliminarItemLink = '';
     $modificarItemLink = '';
+    $crearCategoriaLink = '';
+    $eliminarCategoriaLink = '';
+    $modificarCategoriaLink = '';
     include './view/login.php';
 }
 
@@ -78,6 +84,9 @@ $categorias = $queryCategorias->fetchAll(PDO::FETCH_OBJ);
     <?= $crearItemLink ?>
     <?= $eliminarItemLink ?>
     <?= $modificarItemLink ?>
+    <?= $crearCategoriaLink ?>
+    <?= $eliminarCategoriaLink ?>
+    <?= $modificarCategoriaLink ?>
 
 </body>
 

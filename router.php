@@ -41,10 +41,22 @@ switch ($params[0]) {
     case 'modificar':
         include $controllerFolder . 'modificar.php'; // Carga el controlador para modificar ítems
         break;
-    case 'registro':
-        include 'registro.php'; // Carga la página de registro
+    case 'crear_categoria':
+        include $controllerFolder . 'crear_categoria.php'; // Carga el controlador para crear categorías
+        break;
+    case 'eliminar_categoria':
+        include $controllerFolder . 'eliminar_categoria.php'; // Carga el controlador para eliminar categorías
+        break;
+    case 'modificar_categoria':
+        include $controllerFolder . 'modificar_categoria.php'; // Carga el controlador para modificar categorías
         break;
     default:
         echo '404 Page not found';
         break;
 }
+?>
+
+
+
+
+
